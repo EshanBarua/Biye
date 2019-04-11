@@ -2,8 +2,8 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 03:30 PM
+-- Host: localhost
+-- Generation Time: Apr 11, 2019 at 10:24 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `biye_bari`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Beauty_table`
+--
+
+CREATE TABLE `Beauty_table` (
+  `b_parlour_this_id` int(10) NOT NULL,
+  `b_parlour_name` varchar(30) NOT NULL,
+  `b_parlour_id` int(10) UNSIGNED NOT NULL,
+  `b_parlour_address` varchar(30) NOT NULL,
+  `b_parlour_email` varchar(30) NOT NULL,
+  `b_parlour_contact` varchar(15) NOT NULL,
+  `b_parlour_cost` varchar(8) DEFAULT NULL,
+  `b_parlour_rating` varchar(3) DEFAULT NULL,
+  `b_parlour_photo` longblob NOT NULL,
+  `b_parlour_details` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -157,6 +176,14 @@ CREATE TABLE `venue_table` (
 --
 
 --
+-- Indexes for table `Beauty_table`
+--
+ALTER TABLE `Beauty_table`
+  ADD PRIMARY KEY (`b_parlour_this_id`),
+  ADD UNIQUE KEY `b_parlour_id` (`b_parlour_id`),
+  ADD KEY `b_parlour_id_2` (`b_parlour_id`);
+
+--
 -- Indexes for table `car_rent_table`
 --
 ALTER TABLE `car_rent_table`
@@ -213,6 +240,12 @@ ALTER TABLE `venue_table`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `Beauty_table`
+--
+ALTER TABLE `Beauty_table`
+  MODIFY `b_parlour_this_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `car_rent_table`
