@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 05:44 AM
+-- Generation Time: Apr 11, 2019 at 03:03 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -48,27 +48,32 @@ CREATE TABLE `service_provider` (
   `sp_name` varchar(30) NOT NULL,
   `sp_email` varchar(30) NOT NULL,
   `sp_password` varchar(20) NOT NULL,
-  `sp_gender` varchar(6) NOT NULL,
+  `sp_gender` varchar(5) NOT NULL,
   `sp_category` varchar(15) NOT NULL,
   `sp_contact` varchar(15) NOT NULL,
-  `sp_photo` longblob,
+  `sp_address` varchar(30) NOT NULL,
+  `sp_photo` longblob NOT NULL,
   `sp_details` text NOT NULL,
-  `sp_reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `sp_address` varchar(30) DEFAULT NULL
+  `sp_reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `service_provider_rating`
+-- Table structure for table `venue_table`
 --
 
-CREATE TABLE `service_provider_rating` (
-  `rating_id` int(10) UNSIGNED NOT NULL,
-  `rating` int(5) NOT NULL,
-  `sp_id` int(10) NOT NULL,
-  `sp_name` varchar(30) NOT NULL,
-  `rating_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE `venue_table` (
+  `venue_table_id` int(10) NOT NULL,
+  `venue_name` varchar(30) NOT NULL,
+  `venue_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `venue_address` varchar(30) NOT NULL,
+  `venue_email` varchar(30) NOT NULL,
+  `venue_contact` varchar(15) NOT NULL,
+  `venue_rating` varchar(5) DEFAULT NULL,
+  `venue_cost` varchar(8) DEFAULT NULL,
+  `venue_photo` longblob NOT NULL,
+  `venue_details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -90,10 +95,12 @@ ALTER TABLE `service_provider`
   ADD UNIQUE KEY `sp_id` (`sp_id`);
 
 --
--- Indexes for table `service_provider_rating`
+-- Indexes for table `venue_table`
 --
-ALTER TABLE `service_provider_rating`
-  ADD PRIMARY KEY (`rating_id`);
+ALTER TABLE `venue_table`
+  ADD PRIMARY KEY (`venue_table_id`),
+  ADD UNIQUE KEY `venue_table_id` (`venue_table_id`),
+  ADD KEY `venue_id` (`venue_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -112,10 +119,10 @@ ALTER TABLE `service_provider`
   MODIFY `sp_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `service_provider_rating`
+-- AUTO_INCREMENT for table `venue_table`
 --
-ALTER TABLE `service_provider_rating`
-  MODIFY `rating_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `venue_table`
+  MODIFY `venue_table_id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
