@@ -2,8 +2,8 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 11, 2019 at 10:24 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 12, 2019 at 09:47 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -25,11 +25,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Beauty_table`
+-- Table structure for table `beauty_table`
 --
 
-CREATE TABLE `Beauty_table` (
-  `b_parlour_this_id` int(10) NOT NULL,
+CREATE TABLE `beauty_table` (
+  `b_parlour_this_id` int(11) NOT NULL,
   `b_parlour_name` varchar(30) NOT NULL,
   `b_parlour_id` int(10) UNSIGNED NOT NULL,
   `b_parlour_address` varchar(30) NOT NULL,
@@ -135,6 +135,63 @@ CREATE TABLE `decoration_table` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event_table`
+--
+
+CREATE TABLE `event_table` (
+  `eventp_this_id` int(11) NOT NULL,
+  `eventp_name` varchar(30) NOT NULL,
+  `eventp_id` int(10) UNSIGNED NOT NULL,
+  `eventp_address` varchar(30) NOT NULL,
+  `eventp_email` varchar(30) NOT NULL,
+  `eventp_contact` varchar(15) NOT NULL,
+  `eventp_cost` varchar(8) DEFAULT NULL,
+  `eventp_rating` varchar(3) DEFAULT NULL,
+  `eventp_photo` longblob NOT NULL,
+  `eventp_details` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `music_table`
+--
+
+CREATE TABLE `music_table` (
+  `music_this_id` int(11) NOT NULL,
+  `music_name` varchar(30) NOT NULL,
+  `music_id` int(10) UNSIGNED NOT NULL,
+  `music_address` varchar(30) NOT NULL,
+  `music_email` varchar(30) NOT NULL,
+  `music_contact` varchar(15) NOT NULL,
+  `music_cost` varchar(8) DEFAULT NULL,
+  `music_rating` varchar(3) DEFAULT NULL,
+  `music_photo` longblob NOT NULL,
+  `music_details` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photographar_table`
+--
+
+CREATE TABLE `photographar_table` (
+  `photogr_this_id` int(11) NOT NULL,
+  `photogr_name` varchar(30) NOT NULL,
+  `photogr_id` int(10) UNSIGNED NOT NULL,
+  `photogr_address` varchar(30) NOT NULL,
+  `photogr_email` varchar(30) NOT NULL,
+  `photogr_contact` varchar(15) NOT NULL,
+  `photogr_cost` varchar(8) DEFAULT NULL,
+  `photogr_rating` varchar(3) DEFAULT NULL,
+  `photogr_photo` longblob NOT NULL,
+  `photogr_details` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `service_provider`
 --
 
@@ -176,9 +233,9 @@ CREATE TABLE `venue_table` (
 --
 
 --
--- Indexes for table `Beauty_table`
+-- Indexes for table `beauty_table`
 --
-ALTER TABLE `Beauty_table`
+ALTER TABLE `beauty_table`
   ADD PRIMARY KEY (`b_parlour_this_id`),
   ADD UNIQUE KEY `b_parlour_id` (`b_parlour_id`),
   ADD KEY `b_parlour_id_2` (`b_parlour_id`);
@@ -223,6 +280,30 @@ ALTER TABLE `decoration_table`
   ADD KEY `deco_id` (`deco_id`);
 
 --
+-- Indexes for table `event_table`
+--
+ALTER TABLE `event_table`
+  ADD PRIMARY KEY (`eventp_this_id`),
+  ADD UNIQUE KEY `eventp_id` (`eventp_id`),
+  ADD KEY `eventp_id_2` (`eventp_id`);
+
+--
+-- Indexes for table `music_table`
+--
+ALTER TABLE `music_table`
+  ADD PRIMARY KEY (`music_this_id`),
+  ADD UNIQUE KEY `music_id` (`music_id`),
+  ADD KEY `music_id_2` (`music_id`);
+
+--
+-- Indexes for table `photographar_table`
+--
+ALTER TABLE `photographar_table`
+  ADD PRIMARY KEY (`photogr_this_id`),
+  ADD UNIQUE KEY `photogr_id` (`photogr_id`),
+  ADD KEY `photogr_id_2` (`photogr_id`);
+
+--
 -- Indexes for table `service_provider`
 --
 ALTER TABLE `service_provider`
@@ -240,12 +321,6 @@ ALTER TABLE `venue_table`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `Beauty_table`
---
-ALTER TABLE `Beauty_table`
-  MODIFY `b_parlour_this_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `car_rent_table`
@@ -276,6 +351,24 @@ ALTER TABLE `clothing_table`
 --
 ALTER TABLE `decoration_table`
   MODIFY `deco_this_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `event_table`
+--
+ALTER TABLE `event_table`
+  MODIFY `eventp_this_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `music_table`
+--
+ALTER TABLE `music_table`
+  MODIFY `music_this_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `photographar_table`
+--
+ALTER TABLE `photographar_table`
+  MODIFY `photogr_this_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `service_provider`
